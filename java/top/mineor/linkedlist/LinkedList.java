@@ -1,6 +1,5 @@
 package top.mineor.linkedlist;
 
-import org.junit.Test;
 
 /**
  * Created by mineor on 2016/12/19.
