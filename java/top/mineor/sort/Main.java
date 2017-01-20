@@ -1,4 +1,4 @@
-package top.mineor.sortsearch;
+package top.mineor.sort;
 
 import java.util.Stack;
 
@@ -7,8 +7,8 @@ import java.util.Stack;
  */
 public class Main {
     public static void main(String[] args) {
-        int[] array = {8,2,7,4,1,9,5,5,1,3,6};
-        quickSortByIterative(array);
+        int[] array = {8,2,7,4,1,9,5,3,6};
+        bitMapSort(array);
         print(array);
     }
 
@@ -241,6 +241,121 @@ public class Main {
         }
         array[start] = index;
         return start;
+    }
+
+    /**
+     * 堆排序
+     * @param array
+     */
+    public static void heapSort(int[] array){
+        for(int i = (array.length-1) / 2; i >= 0; i--) {
+            heapAdjustByIter(array, i, array.length - 1);
+        }
+        swapValue(array,0,array.length-1);
+        for(int i = array.length-2; i > 0; i--){
+            heapAdjustByIter(array,0,i);
+            swapValue(array,0,i);
+        }
+    }
+
+    /**
+     * 递归调整成最大堆
+     * @param array
+     * @param root
+     * @param max
+     */
+    public static void heapAdjustByResv(int[] array,int root,int max){
+        int left = root * 2 + 1;
+        int right = root * 2 + 2;
+        if(left <= max){
+            if(right <= max && array[left] < array[right]){
+                if(array[right] > array[root]){
+                    swapValue(array,root,right);
+                    heapAdjustByResv(array,right,max);
+                }
+            }
+            else if(array[left] > array[root]){
+                swapValue(array,root,left);
+                heapAdjustByResv(array,left,max);
+            }
+            else
+                return;
+        }
+    }
+
+    /**
+     * 迭代调整成最大堆
+     * @param array
+     * @param root
+     * @param max
+     */
+    public static void heapAdjustByIter(int[] array,int root,int max){
+        int left;
+        int right;
+        while(true){
+            left = root * 2 + 1;
+            right = root * 2 + 2;
+            if(left <= max){
+                if(right <= max && array[left] < array[right]){
+                    if(array[right] > array[root]){
+                        swapValue(array,root,right);
+                        root = right;
+                    }
+                }
+                else if(array[left] > array[root]){
+                    swapValue(array,root,left);
+                    root = left;
+                }
+                else
+                    return;
+            }
+            else
+                return;
+        }
+    }
+
+    /**
+     * 交换变量
+     * @param array
+     * @param x
+     * @param y
+     */
+    public static void swapValue(int[] array,int x,int y){
+        int temp = array[x];
+        array[x] = array[y];
+        array[y] = temp;
+    }
+
+    /**
+     * 位图排序
+     * @param array
+     */
+    public static void bitMapSort(int[] array){
+        if(array == null || array.length < 1)
+            return;
+        int max = Integer.MIN_VALUE;
+        for (int i = 0; i < array.length; i++) {
+            if (max < array[i]) {
+                max = array[i];
+            }
+        }
+        int[] bit = new int[max/32+1];
+        for (int i = 0; i < array.length; i++) {
+            int m = array[i] % 32;
+            int n = array[i] / 32;
+            bit[n] |= (1 << m);
+        }
+
+        int count = 0;
+        for (int i = 0; i < bit.length; i++) {
+            int num = bit[i];
+            for(int j = 0; j < 32; j++){
+                if((num & (1 << j)) != 0){
+                    array[count++] = i * 32 + j;
+                }
+            }
+        }
+
     }
 
 }

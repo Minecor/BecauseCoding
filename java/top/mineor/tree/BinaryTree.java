@@ -1,4 +1,4 @@
-package top.mineor.binarytree;
+package top.mineor.tree;
 
 /**
  * Created by mineor on 2016/12/19.

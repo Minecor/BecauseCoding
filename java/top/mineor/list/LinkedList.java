@@ -1,4 +1,4 @@
-package top.mineor.linkedlist;
+package top.mineor.list;
 
 
 /**

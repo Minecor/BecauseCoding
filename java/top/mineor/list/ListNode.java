@@ -1,4 +1,4 @@
-package top.mineor.linkedlist;
+package top.mineor.list;
 
 /**
  * Created by mineor on 2016/12/19.
