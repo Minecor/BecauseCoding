@@ -101,9 +101,10 @@ public class LinkedList {
      */
     public static int getListLength(ListNode head){
         int length = 0;
-        while (head != null){
+        ListNode p = head;
+        while (p != null){
             length++;
-            head = head.next;
+            p = p.next;
         }
         return length;
     }
@@ -150,12 +151,89 @@ public class LinkedList {
     }
 
     /**
-     * 通过插入节点来反转链表
+     * 找到第一个值为val的结点并删除
+     * @param head
+     * @param val
+     * @return
+     */
+    public static ListNode removeNode(ListNode head,int val){
+        return null;
+    }
+
+    /**
+     * 删除倒数第index个结点
+     * @param head
+     * @param index
+     * @return
+     */
+    public static ListNode removeNodeLast(ListNode head,int index){
+        return null;
+    }
+
+    /**
+     * 查找中间结点
      * @param head
      * @return
      */
-    public static ListNode reverseLinkedList3(ListNode head){
-        //待补充
+    public static ListNode findMidNode(ListNode head){
+        return null;
+    }
+
+    /**
+     * 链表是否有环
+     * @param head
+     * @return
+     */
+    public static boolean isListLoop(ListNode head){
+        return false;
+    }
+
+    /**
+     * 判断两个链表是否相交
+     * @param list1
+     * @param list2
+     * @return
+     */
+    public static boolean isTwoListIntersect(ListNode list1,ListNode list2){
+        return false;
+    }
+
+    /**
+     * 返回两个链表相交的第一个结点
+     * @param list1
+     * @param list2
+     * @return
+     */
+    public static ListNode getTwoListIntersectNode(ListNode list1,ListNode list2){
+        return null;
+    }
+
+    /**
+     * 获取带环链表第一个环结点
+     * @param head
+     * @return
+     */
+    public static ListNode getListLoopNode(ListNode head){
+        return null;
+    }
+
+    /**
+     * 合并两个排序链表
+     * @param list1
+     * @param list2
+     * @return
+     */
+    public static ListNode mergeTwoLinkedList(ListNode list1,ListNode list2){
+        return null;
+    }
+
+    /**
+     * O(1)时间复杂度删除链表结点,非首尾结点
+     * @param head
+     * @param deleteNode
+     * @return
+     */
+    public static ListNode deleteListNode(ListNode head,ListNode deleteNode){
         return null;
     }
 
